@@ -46,7 +46,7 @@
                             <td>
                                 {{--<a href="">Sửa</a> | <a href="">Xoá</a>--}}
                                 <button class="btn btn-primary edit" title="{{"Sửa"}}" data-toggle="modal" data-target="#edit" type="button" data-id="{{ $value->id }}"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger edit" title="{{"Xoá"}}" data-toggle="modal" data-target="#delete" type="button" data-id="{{ $value->id }}"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-danger delete" title="{{"Xoá"}}" data-toggle="modal" data-target="#delete" type="button" data-id="{{ $value->id }}"><i class="fas fa-trash"></i></button>
                             </td>
                     </tr>
                     @endforeach

@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('admin.pages.index');
 });
 
+
+Route::get('getproducttype','AjaxController@getProductType');
 Route::group(['prefix'=>'admin'],function (){
     Route::resource('category','CategoryController');
+    Route::resource('producttype','ProductTypeController');
+    Route::resource('product','ProductController');
 });

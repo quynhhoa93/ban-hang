@@ -44,3 +44,19 @@
 <script src="{{asset('assets/admin/js/sb-admin-2.min.js')}}"></script>
 <script src="{{asset('assets/admin/js/ajax.js')}}"></script>
 <script src="{{asset('assets/admin/js/toastr.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+</script>
+
+@if(session('thongbao'))
+    <script type="text/javascript">
+        toastr.success('{{session('thongbao')}}','thông báo',{timeout : 5000});
+    </script>
+@endif
+
+@if(session('error'))
+    <script type="text/javascript">
+        toastr.error('{{session('error')}}','thông báo',{timeout : 5000});
+    </script>
+@endif

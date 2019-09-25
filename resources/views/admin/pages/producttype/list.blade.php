@@ -1,12 +1,13 @@
 @extends('admin.layouts.master')
+
 @section('title')
-    Danh sách Loại sản phẩm
+    Danh sách loại sản phẩm
 @endsection
 
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Loại sản phẩm</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Loại Sản Phẩm</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,9 +17,9 @@
                         <th>STT</th>
                         <th>Name</th>
                         <th>Slug</th>
-                        <th>category</th>
-                        <th>status</th>
-                        <th>Chinh sua</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Chỉnh sửa</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -26,39 +27,37 @@
                         <th>STT</th>
                         <th>Name</th>
                         <th>Slug</th>
-                        <th>category</th>
+                        <th>Category</th>
                         <th>Status</th>
-                        <th>Chinh sua</th>
+                        <th>Chỉnh sửa</th>
                     </tr>
                     </tfoot>
                     <tbody>
-                    @foreach($producttype as $key=>$value)
-
+                    @foreach($producttype as $key => $value)
                         <tr>
-                            <td>{{$key+1}}</td>
-                            <td>{{$value->name}}</td>
-                            <td>{{$value->slug}}</td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->slug }}</td>
+                            <td>{{ $value->Category->name }}</td>
                             <td>
-                                @if($value->status === 1)
-                                    {{"Hiển thị"}}
+                                @if($value->status==1)
+                                    {{ "Hiển thị" }}
                                 @else
-                                    {{"không hiển thị"}}
+                                    {{ "Không hiển thị" }}
                                 @endif
                             </td>
                             <td>
-                                {{--<a href="">Sửa</a> | <a href="">Xoá</a>--}}
-                                <button class="btn btn-primary edit" title="{{"Sửa"}}" data-toggle="modal" data-target="#edit" type="button" data-id="{{ $value->id }}"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger edit" title="{{"Xoá"}}" data-toggle="modal" data-target="#delete" type="button" data-id="{{ $value->id }}"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-primary editProducttype" title="{{ "Sửa ".$value->name }}" data-toggle="modal" data-target="#edit" type="button" data-id="{{ $value->id }}"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger deleteProducttype" title="{{ "Xóa ".$value->name }}" data-toggle="modal" data-target="#delete" type="button" data-id="{{ $value->id }}"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <div class="pull-right">{{$category->links()}}</div>
+                <div class="pull-right">{{ $producttype->links() }}</div>
             </div>
         </div>
     </div>
-
     <!-- Edit Modal-->
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -73,15 +72,18 @@
                     <div class="row" style="margin: 5px">
                         <div class="col-lg-12">
                             <form role="form">
-                                <!-- <input type="hidden" name="id" value=""> -->
                                 <fieldset class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control name" name="name" placeholder="Nhập tên category">
-                                    <span class="error" style="color: red;font-size: 1rem;"></span>
+                                    <input class="form-control name" name="name" placeholder="Nhập tên loại sản phẩm">
+                                    <div class="alert alert-danger error" style="color: red;font-size: 1rem"></div>
                                 </fieldset>
                                 <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-control idCategory" name="idCategory"></select>
+                                </div>
+                                <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control status" name="status">
+                                    <select class="form-control" name="status">
                                         <option value="1" class="ht">Hiển Thị</option>
                                         <option value="0" class="kht">Không Hiển Thị</option>
                                     </select>
@@ -91,7 +93,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success update">Save</button>
+                    <button type="button" class="btn btn-success updateProductType">Save</button>
                     <button type="reset" class="btn btn-primary">Làm Lại</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </div>
@@ -109,7 +111,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="margin-left: 183px;">
-                    <button type="button" class="btn btn-success del">Có</button>
+                    <button type="button" class="btn btn-success delProductType">Có</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Không</button>
                     <div>
                     </div>

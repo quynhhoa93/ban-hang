@@ -8,13 +8,13 @@ class Product extends Model
 {
     protected $table ='products';
     protected $fillable =[
-        'name','slug','description','quantity','price','promotional','idCategory','idProductType','status',
+        'name','slug','description','quantity','price','promotional','idCategory','idProductType','status','image',
     ];
 
     public function productTypes(){
-        return $this->belongsTo('App\Models\ProductTypes','idProductType','id');
+        return $this->belongsTo('App\Models\ProductType','idProductType','id');
     }
     public function categories(){
-        return $this->belongsTo('App\Models\Categories','idCategory','id');
+        return $this->belongsTo('App\Models\Category','idCategory','id');
     }
 }
