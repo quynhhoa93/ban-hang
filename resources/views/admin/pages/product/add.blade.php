@@ -15,34 +15,49 @@
                     <fieldset class="form-group">
                         <label>Tên sản phẩm</label>
                         <input class="form-control" name="name" placeholder="Nhập tên loại sản phẩm">
-                        @error('name')
-                        <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                        @if($errors->has('name'))
+                            <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                        @endif
                     </fieldset>
 
                     <div class="form-group">
                         <label for="quantity">Số lượng</label>
                         <input type="number" name="quantity" min="1" value="1" class="form-control">
+                        @if($errors->has('quantity'))
+                            <div class="alert alert-danger">{{ $errors->first('quantity') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="price">Đơn giá</label>
                         <input type="number" name="price" placeholder="Nhập đơn giá" class="form-control">
+                        @if($errors->has('price'))
+                            <div class="alert alert-danger">{{ $errors->first('price') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="promotional">Giá khuyến mãi</label>
                         <input type="number" name="promotional" placeholder="Nhập giá khuyến mãi nếu có" class="form-control">
+                        @if($errors->has('promotional'))
+                            <div class="alert alert-danger">{{ $errors->first('promotional') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="image">Ảnh sản phẩm</label>
                         <input type="file" name="image" class="form-control">
+                        @if($errors->has('image'))
+                            <div class="alert alert-danger">{{ $errors->first('image') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label>Mô tả sản phẩm</label>
                         <textarea name="description" id="editor1" cols="5" rows="5" class="form-control"></textarea>
+                        @if($errors->has('description'))
+                            <div class="alert alert-danger">{{ $errors->first('description') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">

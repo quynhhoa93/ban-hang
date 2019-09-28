@@ -21,4 +21,7 @@ Route::group(['prefix'=>'admin'],function (){
     Route::resource('category','CategoryController');
     Route::resource('producttype','ProductTypeController');
     Route::resource('product','ProductController');
+
+    //do method put khong cho gui image sang nen viet them 1 ham post
+    Route::post('updatePro/{id}','ProductController@update');
 });
